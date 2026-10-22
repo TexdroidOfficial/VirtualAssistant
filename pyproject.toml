@@ -1,7 +1,7 @@
 [project]
 name = "virtualassistantrag"
 version = "0.1.0"
-description = "Add your description here"
+description = "Local RAG chatbot that ingests PDF manuals and answers employee questions using LangChain, Chroma and Ollama."
 readme = "README.md"
 authors = [
     { name = "Texdroid", email = "texdroidofficial@gmail.com" }

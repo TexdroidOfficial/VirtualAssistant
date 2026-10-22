@@ -6,5 +6,9 @@ src/virtualassistantrag/__pycache__/
 src/virtualassistantrag/vector_db/
 src/virtualassistantrag/documentos_temp/
 
+# Rutas por defecto cuando se ejecuta desde la raíz del proyecto
+/vector_db/
+/documentos_temp/
+
 # Archivos de entorno
 .env
