@@ -28,7 +28,7 @@ A Retrieval-Augmented Generation (RAG) system that ingests operational documents
    PyPDFLoader → RecursiveCharacterTextSplitter
             │        (chunk 1000 / overlap 200)
             ▼
-   OllamaEmbeddings (nomic-embed-text)
+   OllamaEmbeddings (embeddinggemma-2)
             │
             ▼
    Chroma vector database (persisted to disk)
@@ -97,7 +97,7 @@ A Retrieval-Augmented Generation (RAG) system that ingests operational documents
 
    ```bash
    ollama pull gemma4:e4b-it-qat
-   ollama pull nomic-embed-text
+   ollama pull embeddinggemma-2
    ```
 
    > If the chat model tag is not available in your Ollama version, pull any compatible model
@@ -133,7 +133,7 @@ All tunable parameters live at the top of `src/virtualassistantrag/rag_core.py`:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `LLM_MODEL` | `gemma4:e4b-it-qat` | Ollama chat model used to answer |
-| `EMBEDDING_MODEL` | `nomic-embed-text` | Ollama embedding model |
+| `EMBEDDING_MODEL` | `embeddinggemma-2` | Ollama embedding model |
 | `DB_DIR` | `./vector_db` | Chroma persistence directory |
 | `chunk_size` / `chunk_overlap` | `1000` / `200` | Text splitter settings |
 | `search_kwargs={"k": 3}` | `3` | Number of retrieved chunks per query |
@@ -144,7 +144,7 @@ The upload staging folder is `./documentos_temp`, defined in `app.py`. Both `vec
 
 1. **Load** — `PyPDFLoader` extracts text page by page.
 2. **Split** — `RecursiveCharacterTextSplitter` breaks the text into overlapping chunks to preserve context across boundaries.
-3. **Embed & store** — each chunk is embedded with `nomic-embed-text` and persisted in Chroma.
+3. **Embed & store** — each chunk is embedded with `embeddinggemma-2` and persisted in Chroma.
 4. **Retrieve** — the user's question is embedded and the 3 most similar chunks are fetched.
 5. **Generate** — the chunks are injected into a Spanish system prompt that instructs the model to answer concisely (max. three sentences) and to admit when it does not know.
 6. **Render** — the answer is streamed into the chat and appended to the session history.
@@ -195,7 +195,7 @@ Sistema de Generación Aumentada por Recuperación (RAG) que ingiere documentos 
    PyPDFLoader → RecursiveCharacterTextSplitter
             │        (chunk 1000 / overlap 200)
             ▼
-   OllamaEmbeddings (nomic-embed-text)
+   OllamaEmbeddings (embeddinggemma-2)
             │
             ▼
    Base vectorial Chroma (persistida en disco)
@@ -264,7 +264,7 @@ Sistema de Generación Aumentada por Recuperación (RAG) que ingiere documentos 
 
    ```bash
    ollama pull gemma4:e4b-it-qat
-   ollama pull nomic-embed-text
+   ollama pull embeddinggemma-2
    ```
 
    > Si el tag del modelo de chat no está disponible en tu versión de Ollama, descarga cualquier
@@ -301,7 +301,7 @@ Todos los parámetros ajustables están al inicio de `src/virtualassistantrag/ra
 | Variable | Valor por defecto | Función |
 | --- | --- | --- |
 | `LLM_MODEL` | `gemma4:e4b-it-qat` | Modelo de chat de Ollama para responder |
-| `EMBEDDING_MODEL` | `nomic-embed-text` | Modelo de embeddings de Ollama |
+| `EMBEDDING_MODEL` | `embeddinggemma-2` | Modelo de embeddings de Ollama |
 | `DB_DIR` | `./vector_db` | Directorio de persistencia de Chroma |
 | `chunk_size` / `chunk_overlap` | `1000` / `200` | Configuración del divisor de texto |
 | `search_kwargs={"k": 3}` | `3` | Cantidad de fragmentos recuperados por consulta |
