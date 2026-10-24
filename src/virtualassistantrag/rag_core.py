@@ -8,7 +8,7 @@ from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 LLM_MODEL = "gemma4:e4b-it-qat"
-EMBEDDING_MODEL = "nomic-embed-text"
+EMBEDDING_MODEL = "embeddinggemma-2"
 DB_DIR = "./vector_db"
 
 
